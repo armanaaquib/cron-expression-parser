@@ -8,6 +8,9 @@ data class CronJob(
 ) {
     companion object {
         fun from(expression: String): CronJob {
+            val fields = expression.split(" ")
+            require(fields.size >= 6) { "Invalid cron job expression. It should have 6 fields including command." }
+
             val expressionParser = CronExpressionParser.from(expression)
             return CronJob(
                 expressionParser.getMinute(),
@@ -15,7 +18,7 @@ data class CronJob(
                 expressionParser.getDayOfMonth(),
                 expressionParser.getMonth(),
                 expressionParser.getDayOfWeek(),
-                expressionParser.getCommand()
+                command = fields[5]
             )
         }
     }
