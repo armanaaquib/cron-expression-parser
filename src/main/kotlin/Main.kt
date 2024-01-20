@@ -1,6 +1,12 @@
+import cron.CronJob
+
 fun main(args: Array<String>) {
-    val cronJob = CronJob.from(args.joinToString(" "))
-    displayCronJob(cronJob)
+    try {
+        val cronJob = CronJob.from(args.joinToString(" "))
+        displayCronJob(cronJob)
+    } catch (ex: Exception) {
+        println(ex.message)
+    }
 }
 
 fun displayCronJob(cronJob: CronJob) {

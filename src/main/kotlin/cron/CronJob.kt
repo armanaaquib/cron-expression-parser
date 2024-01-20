@@ -1,3 +1,5 @@
+package cron
+
 data class CronJob(
     val minute: List<Int>,
     val hour: List<Int>,
