@@ -658,7 +658,7 @@ internal class CronExpressionParserTest {
             CronExpressionParser.from("1 2 3 4")
         }
 
-        assertEquals("Invalid cron expression. It should have 5 fields.", exception.message)
+        assertEquals("Invalid cron expression. It should have 5 fields excluding command.", exception.message)
     }
 
     @Test

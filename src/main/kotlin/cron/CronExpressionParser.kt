@@ -90,7 +90,7 @@ class CronExpressionParser(
     companion object {
         fun from(expression: String): CronExpressionParser {
             val fields = expression.split(" ")
-            require(fields.size >= 5) { "Invalid cron expression. It should have 5 fields." }
+            require(fields.size >= 5) { "Invalid cron expression. It should have 5 fields excluding command." }
             return CronExpressionParser(
                 fields[0], fields[1], fields[2], fields[3], fields[4]
             )

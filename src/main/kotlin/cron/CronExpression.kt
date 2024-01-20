@@ -1,6 +1,6 @@
 package cron
 
-data class CronJob(
+data class CronExpression(
     val minute: List<Int>,
     val hour: List<Int>,
     val dayOfMonth: List<Int>,
@@ -9,12 +9,12 @@ data class CronJob(
     val command: String
 ) {
     companion object {
-        fun from(expression: String): CronJob {
+        fun from(expression: String): CronExpression {
             val fields = expression.split(" ")
-            require(fields.size >= 6) { "Invalid cron job expression. It should have 6 fields including command." }
+            require(fields.size >= 6) { "Invalid cron expression. It should have 6 fields including command." }
 
             val expressionParser = CronExpressionParser.from(expression)
-            return CronJob(
+            return CronExpression(
                 expressionParser.getMinute(),
                 expressionParser.getHour(),
                 expressionParser.getDayOfMonth(),
