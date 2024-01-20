@@ -8,30 +8,23 @@ class CronExpressionParser(
     private val dayOfWeekField: String
 ) {
     fun getMinute(): List<Int> {
-        val minuteErrorMessage = "Invalid minute field. Allowed values: 0–59 and Allowed special characters: * , - /"
-        return parseFields(minuteField, 0, 59, minuteErrorMessage)
+        return parseFields(minuteField, 0, 59, ErrorMessages.minute)
     }
 
     fun getHour(): List<Int> {
-        val hourErrorMessage = "Invalid hour field. Allowed values: 0–23 and Allowed special characters: * , - /"
-        return parseFields(hourField, 0, 23, hourErrorMessage)
+        return parseFields(hourField, 0, 23, ErrorMessages.hour)
     }
 
     fun getDayOfMonth(): List<Int> {
-        val dayOfMonthErrorMessage =
-            "Invalid day of month field. Allowed values: 1–31 and Allowed special characters: * , - /"
-        return parseFields(dayOfMonthField, 1, 31, dayOfMonthErrorMessage)
+        return parseFields(dayOfMonthField, 1, 31, ErrorMessages.dayOfMonth)
     }
 
     fun getMonth(): List<Int> {
-        val monthErrorMessage = "Invalid month field. Allowed values: 1–12 and Allowed special characters: * , - /"
-        return parseFields(monthField, 1, 12, monthErrorMessage)
+        return parseFields(monthField, 1, 12, ErrorMessages.month)
     }
 
     fun getDayOfWeek(): List<Int> {
-        val dayOfWeekErrorMessage =
-            "Invalid day of week field. Allowed values: 0–6 and Allowed special characters: * , - /"
-        return parseFields(dayOfWeekField, 0, 6, dayOfWeekErrorMessage)
+        return parseFields(dayOfWeekField, 0, 6, ErrorMessages.dayOfWeek)
     }
 
     private fun parseFields(field: String, min: Int, max: Int, errorMessage: String): List<Int> {
