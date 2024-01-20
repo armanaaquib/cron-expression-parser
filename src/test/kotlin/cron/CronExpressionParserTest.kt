@@ -688,14 +688,14 @@ internal class CronExpressionParserTest {
 
         @Test
         fun `should create CronExpressionParser from expression`() {
-            val cronExpressionParser = CronExpressionParser.from("0 0 1 1 1 CMD")
+            val cronExpressionParser = CronExpressionParser.from("0 0 1 1 0")
 
             assertAll({
                 assertEquals(cronExpressionParser.getMinute(), listOf(0))
                 assertEquals(cronExpressionParser.getHour(), listOf(0))
                 assertEquals(cronExpressionParser.getDayOfMonth(), listOf(1))
                 assertEquals(cronExpressionParser.getMonth(), listOf(1))
-                assertEquals(cronExpressionParser.getDayOfWeek(), listOf(1))
+                assertEquals(cronExpressionParser.getDayOfWeek(), listOf(0))
             })
         }
     }
